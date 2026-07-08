@@ -1,0 +1,26 @@
+kind: Deployment
+apiVersion: apps/v1
+
+metadata:
+  name: 1-nginx-dep
+  namespace: nginx-2
+
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+
+  template:
+    metadata:
+      labels:
+        app: nginx
+    
+    spec:
+      containers:
+      - name: 1app-nginx
+        image: vishalpawar2672/nginxweb:latest
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 80
+
